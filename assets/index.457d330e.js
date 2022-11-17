@@ -1,0 +1,1 @@
+import{j as e,M as n,b as i,a as t,c as r,O as o}from"./index.e8e9eb63.js";function l({navigation:a}){return e(n,{children:[a,e(i,{children:[t(r,{layoutId:"title",children:"THE TERMINOLOGY\u2026"}),t(o,{context:"main"})]}),t(o,{context:"image"})]})}export{l as default};
