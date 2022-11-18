@@ -6,11 +6,12 @@ import { contentWrapperAnim } from "../../animation";
 import { br } from "../../utils/Device";
 
 import { routeStyleVariants } from "./../../utils/routeStyleVariants";
+import { TStyleVariants } from "../../types/global";
 
 type Props = {
     children?: React.ReactNode;
 };
-const styleVariants = {
+const styleVariants: TStyleVariants = {
     destinations: css`
         grid-row: 2 / 4;
         h2 {
@@ -40,7 +41,14 @@ const styleVariants = {
         p {
             text-align: center;
         }
-
+        p {
+            padding: 0 1.5rem;
+        }
+        ${br.md} {
+            p {
+                padding: 0;
+            }
+        }
         ${br.xl} {
             h3,
             h4,
@@ -53,8 +61,9 @@ const styleVariants = {
         }
     `,
     technology: css`
-        padding: 0 1.5rem 2rem;
+        padding: 0 2.5rem 2rem;
         row-gap: 0.5rem;
+
         ${br.md} {
             padding: 0 10rem 2rem;
             gap: 1rem;
@@ -65,9 +74,6 @@ const styleVariants = {
             h3,
             p {
                 text-align: left;
-            }
-            p {
-                min-height: 14rem;
             }
         }
     `,

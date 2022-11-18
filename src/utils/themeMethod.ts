@@ -18,13 +18,12 @@ export function createGrayScale(scaleOffset: number) {
         return p;
     }, {} as Record<greyScale, string>);
 }
-//Record<greyScale, `hsla(0,0%,${number}0%,1)`>
 
 /**
  * 調整 color 的透明度，使用 hsla
  * @param {string} color
  * @param {number} value
- * @returns
+ * @returns {string} css hsla
  */
 export function adjustAlpha(color: string, value: number): string {
     return color.replace(/(\d.?)\)$/, `${value})`);

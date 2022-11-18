@@ -19,7 +19,7 @@ const MotionText: React.FunctionComponent<
     return (
         <Tag variants={wrapperAnim} exit="exit" initial="hidden" animate="show">
             {words.split(splitText).map((word, i) => {
-                // if word is space
+                //  split as if a word
                 if (word === " ") {
                     word = "\u00A0";
                 }
@@ -39,6 +39,7 @@ const MotionText: React.FunctionComponent<
                         >
                             {word}
                         </motion.span>
+                        {/* split as if a word  */}
                         {splitText === " " ? "\u00A0" : null}
                     </motion.span>
                 );

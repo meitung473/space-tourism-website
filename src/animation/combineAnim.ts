@@ -1,12 +1,14 @@
+import { Variants } from "framer-motion";
 import { animationVariants } from "../types/animation";
-import { Variant, Variants } from "framer-motion";
 
-// /**
-//  * input animations should be unique css property
-//  * @param  {animationVariants[]} args
-//  * @returns {animationVariants}
-//  */
-
+/**
+ * combine different default animation
+ * 
+ * Note: the after one's CSS properties would override the above
+ * 
+ * @param {Variants[]} args
+ * @returns {animationVariants} animation combine inputs with unique CSS properties
+ */
 export function combineAnim(...args: Variants[]) {
     return args.reduce((newAnim: Variants, anim: Variants) => {
         for (let key in anim) {
@@ -18,6 +20,5 @@ export function combineAnim(...args: Variants[]) {
         }
 
         return newAnim;
-    }, {} as Record<string, Variant>);
+    }, {} as animationVariants);
 }
-// {[key in keyof animationVariants]: animationVariants[key] }

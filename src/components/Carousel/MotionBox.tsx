@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
 import { withOutletContainer } from "../../HOC";
+import { TStyleVariants } from "../../types/global";
 import { br } from "../../utils/Device";
 import { routeStyleVariants } from "./../../utils/routeStyleVariants";
 
-const styleVariants = {
+const styleVariants: TStyleVariants = {
     destinations: css`
         gap: 1.5rem;
         grid-template-rows: repeat(5, min-content);

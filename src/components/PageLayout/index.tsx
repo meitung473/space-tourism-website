@@ -1,5 +1,5 @@
 import { Suspense, useMemo, useEffect, useRef } from "react";
-import PageNavigation from "../PageNavigation";
+import { AnimatePresence } from "framer-motion";
 import {
     Routes,
     Route,
@@ -7,21 +7,22 @@ import {
     useNavigate,
     Navigate,
 } from "react-router-dom";
-import data from "../../data/data.json";
-import { Wrapper, Number, Title } from "./style";
-import routes from "../../routes";
-import useNestedPath from "../../hooks/useNestedPath";
-import { PageVariants } from "./animate";
-import { AnimatePresence } from "framer-motion";
 import RotateLoader from "react-spinners/RotateLoader";
+
+import data from "../../data/data.json";
+import routes from "../../routes";
+
 import { theme } from "../../style/theme";
+import { Wrapper, Number, Title } from "./style";
+
+import useNestedPath from "../../hooks/useNestedPath";
+
+import PageNavigation from "../PageNavigation";
+
+import { IPageLayoutProps } from "./type";
 import { ICarouselContext } from "../Carousel/CarouselContextPage";
 
-export interface IPageLayoutProps {
-    index: number;
-    title: typeof routes[number]["title"];
-    firstVisit: boolean;
-}
+import { PageVariants } from "./animate";
 
 export default function PageLayout({
     index,
@@ -104,7 +105,7 @@ export default function PageLayout({
                         />
                         <Route
                             key={location.key}
-                            path="/"
+                            path="/*"
                             element={
                                 <Component.Layout
                                     navigation={

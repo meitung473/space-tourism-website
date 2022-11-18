@@ -9,13 +9,13 @@ import BaseStyle from "./style/BaseStyle";
 import useNestedPath from "./hooks/useNestedPath";
 import { useEffect, useRef } from "react";
 import { ThemeProvider } from "styled-components";
-import PageTransition from "./components/PageTransition";
+import PageWrapper from "./Page/PageWrapper";
+import { TfirstVisit } from "./types/global";
 
 export default function SpaceWebsite() {
     const location = useLocation();
     const paths = useNestedPath();
-    const firstVisit = useRef(true);
-
+    const firstVisit = useRef<TfirstVisit>(true);
     /**
      * child routes outlet not render at first visit
      * it would match next render
@@ -38,31 +38,30 @@ export default function SpaceWebsite() {
     useEffect(() => {
         firstVisit.current = false;
     }, []);
+
     return (
         <ThemeProvider theme={theme}>
             <BaseStyle />
             <Container $path={paths?.[1] ?? "home"}>
                 <Header />
-                <AnimatePresence mode="wait" initial={false}>
+                <AnimatePresence mode="wait" custom={firstVisit.current}>
                     <Routes key={paths?.[1] ?? "home"} location={location}>
                         <Route path="*" element={<Navigate to="/home" />} />
                         <Route path="/" element={<Navigate to="/home" />} />
                         <Route
                             index
                             element={
-                                <>
-                                    <PageTransition />
+                                <PageWrapper firstVisit={firstVisit.current}>
                                     <Home />
-                                </>
+                                </PageWrapper>
                             }
                         />
                         <Route
                             path="home"
                             element={
-                                <>
-                                    <PageTransition />
+                                <PageWrapper firstVisit={firstVisit.current}>
                                     <Home />
-                                </>
+                                </PageWrapper>
                             }
                         />
                         {routes.map((route, index) => {
@@ -71,14 +70,13 @@ export default function SpaceWebsite() {
                                     key={location.pathname}
                                     path={`/${route.path}/*`}
                                     element={
-                                        <>
-                                            <PageTransition />
+                                        <PageWrapper>
                                             <PageLayout
                                                 index={index}
                                                 title={route.title}
                                                 firstVisit={firstVisit.current}
                                             />
-                                        </>
+                                        </PageWrapper>
                                     }
                                 />
                             );

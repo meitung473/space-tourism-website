@@ -1,6 +1,7 @@
 import { lazy } from "react";
-import data from "./data/data.json";
-import { Entries, IRouteInfo, TData } from "./types/global";
+import data from "../data/data.json";
+import { Entries } from "../types/global";
+import { IRouteInfo, TData } from "./type";
 
 const title = ["Pick your destination", "Meet your crew", "Space launch 101"];
 
@@ -11,8 +12,10 @@ const routes = (Object.entries(data) as Entries<TData>).reduce(
         paths.push({
             path: path,
             title: title[index],
-            component: lazy(() => import(`./Page/${relativePath}`)),
-            carousel: lazy(() => import(`./Page/${relativePath}/Carousel`)),
+            component: lazy(() => import(`../Page/${relativePath}/index.tsx`)),
+            carousel: lazy(
+                () => import(`../Page/${relativePath}/Carousel.tsx`)
+            ),
             child: data[path].map((route) => route.name),
         });
         return paths;

@@ -6,7 +6,9 @@ interface Props {
     children?: React.ReactNode;
 }
 
-// react router component can be wrapped and turn into a motion component
+/**
+ * custom component can be wrapped and turn into a motion component
+ */
 const ForwardedLink = React.forwardRef<
     HTMLAnchorElement,
     Props & MotionProps & LinkProps

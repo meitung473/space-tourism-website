@@ -36,7 +36,6 @@ export const scaleAndOpacityAnim = combineAnim(
     defaultOpacityAnim,
     defaultScaleAnim
 );
-console.log(scaleAndOpacityAnim);
 
 export const contentWrapperAnim: animationVariants = {
     show: {
@@ -52,3 +51,8 @@ export const contentWrapperAnim: animationVariants = {
         },
     },
 };
+
+/**
+ * only for wrapper element propagation
+ */
+export const emptyVariants: animationVariants = {};

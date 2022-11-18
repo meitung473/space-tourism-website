@@ -26,6 +26,7 @@ export const ContentBox = styled(Box)`
     align-items: center;
     margin: 0 auto;
     gap: 16px;
+
     ${br.md} {
         height: 100%;
     }
@@ -37,7 +38,12 @@ export const ContentBox = styled(Box)`
         color: ${theme.colors.primary.Default};
     }
     p {
+        padding: 0 2rem;
+        ${br.md} {
+            padding: 0 10rem;
+        }
         ${br.xl} {
+            padding: 0;
             text-align: left;
         }
     }

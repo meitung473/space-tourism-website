@@ -1,6 +1,6 @@
 import { theme } from "../../../style/theme";
 import { animationVariants } from "../../../types/animation";
-import { Variant, Variants } from "framer-motion";
+import { Variant } from "framer-motion";
 import { adjustAlpha } from "../../../utils/themeMethod";
 
 type TloadingType = "loading" | "static";

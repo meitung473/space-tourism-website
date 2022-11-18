@@ -5,27 +5,27 @@ import getDisplayName from "../utils/getDisplayName";
 export interface IWithOutletContainerProps<T> {
     content: T;
 }
-interface Props {
+type Props = {
     children?: React.ReactNode;
-}
+};
 
 // for carousel content need to position with portal (HTML)
 export default function withOutletContainer<
     T,
     P extends Partial<IWithOutletContainerProps<T>> & Props
->(CoreComponent: React.ComponentType<T>) {
-    const Wrapper = React.forwardRef<React.Ref<T>, P>((props, ref) => {
+>(WrappedComponent: React.ComponentType<T>) {
+    const Component = React.forwardRef<React.Ref<T>, P>((props, ref) => {
         const { children, ...restProp } = props;
         const paths = useNestedPath();
         if (typeof paths === "undefined") return null;
         return (
-            <CoreComponent $path={paths[1]} ref={ref} {...(restProp as T)}>
+            <WrappedComponent $path={paths[1]} ref={ref} {...(restProp as T)}>
                 {children}
-            </CoreComponent>
+            </WrappedComponent>
         );
     });
-    Wrapper.displayName = `withOutletContainer(${getDisplayName(
-        CoreComponent
+    Component.displayName = `withOutletContainer(${getDisplayName(
+        WrappedComponent
     )})`;
-    return Wrapper;
+    return Component;
 }

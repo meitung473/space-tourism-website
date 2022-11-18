@@ -46,7 +46,7 @@ const SubContent = styled(motion.h6)`
     color: #ffffff;
     display: block;
 `;
-const SubHeading = styled(motion.h5)`
+const SubHeading = styled(motion.h6)`
     font-family: "Barlow Condensed";
     line-height: 1.063rem;
     letter-spacing: 0.148rem;

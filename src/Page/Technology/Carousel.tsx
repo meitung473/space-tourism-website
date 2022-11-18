@@ -1,4 +1,4 @@
-import importImage from "../../utils/importImage";
+import { importImage } from "../../utils/importImage";
 import {
     CarouselLayout,
     Content,
@@ -6,7 +6,7 @@ import {
     useCarouselContext,
 } from "../../components/Carousel";
 import MotionText from "../../components/AnimationText/index";
-import { useMemo } from "react";
+
 import { motion } from "framer-motion";
 import { defaultArticleAnim } from "../../animation";
 import { breakpointSizes } from "../../utils/Device";
@@ -29,23 +29,23 @@ function Main() {
 function Image() {
     const { type, content } = useCarouselContext();
     const { images, name } = content as TContentType;
-    const defaultSrc = useMemo(
-        () =>
-            new URL(
-                "../../assets/" + importImage(images.portrait),
-                import.meta.url
-            ).href,
 
-        [images.portrait]
-    );
     if (type !== "image") return null;
 
     return (
-        <ImageStyle name={name} defaultSrc={defaultSrc}>
+        <ImageStyle
+            name={name}
+            defaultSrc={
+                new URL(
+                    `../../assets/${importImage(images.portrait)}`,
+                    import.meta.url
+                ).href
+            }
+        >
             <source
                 srcSet={
                     new URL(
-                        "../../assets/" + importImage(images.landscape),
+                        `../../assets/${importImage(images.landscape)}`,
                         import.meta.url
                     ).href
                 }

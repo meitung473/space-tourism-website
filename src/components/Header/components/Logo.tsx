@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-const style = {
-    marginRight: "4em",
-};
-
 export default function Logo() {
     return (
-        <div style={style}>
+        <div
+            style={{
+                marginRight: "4em",
+            }}
+        >
             <Link to="home">
                 <motion.svg
                     xmlns="http://www.w3.org/2000/svg"

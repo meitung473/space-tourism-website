@@ -4,7 +4,7 @@ import { TStyleVariants } from "../../../types/global";
 import { br } from "../../../utils/Device";
 import { routeStyleVariants } from "../../../utils/routeStyleVariants";
 
-const styleVariants = {
+const styleVariants: TStyleVariants = {
     destinations: css`
         aspect-ratio: 1 / 1;
         display: grid;
@@ -73,16 +73,17 @@ const styleVariants = {
             width: 100%;
             height: 100%;
         }
+        picture {
+            width: 100%;
+        }
         img {
+            width: 100%;
             max-width: 100%;
             max-height: 100%;
-            object-fit: contain;
+            object-fit: cover;
             ${br.md} {
-                object-fit: cover;
-                object-position: center;
-            }
-            ${br.xl} {
                 object-fit: contain;
+                object-position: center;
             }
         }
     `,
@@ -90,9 +91,7 @@ const styleVariants = {
 
 export const Wrapper = styled(motion.figure)`
     ${routeStyleVariants(styleVariants)}
-    picture {
-        height: 100%;
-    }
+
     image {
         display: block;
         font-size: 0;

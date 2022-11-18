@@ -1,7 +1,7 @@
 import { SubTitle } from "./style";
 import { Outlet } from "react-router-dom";
 import { MotionBox, MotionWrapper } from "../../components/Carousel";
-import { ILayoutComponentProps } from "../../types/global";
+import { ILayoutComponentProps } from "../../components/PageLayout/type";
 
 function Technology({ navigation }: ILayoutComponentProps) {
     return (

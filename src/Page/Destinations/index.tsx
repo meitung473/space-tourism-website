@@ -1,7 +1,7 @@
 import { SubHeading, Info, Line } from "./style";
 import { Outlet } from "react-router-dom";
 import { MotionBox, MotionWrapper } from "../../components/Carousel";
-import { ILayoutComponentProps } from "../../types/global";
+import { ILayoutComponentProps } from "../../components/PageLayout/type";
 
 // this layout not moved when child route changes
 const Destinations = ({ navigation }: ILayoutComponentProps) => {

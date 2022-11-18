@@ -1,10 +1,11 @@
 import { animationVariants } from "../../types/animation";
+import { PageTransitionProps } from "./type";
 
 export const overlayVariants: animationVariants = {
-    hidden: {
-        scaleX: 1,
+    hidden: (firstVisit: PageTransitionProps["firstVisit"]) => ({
+        scaleX: firstVisit ? 0 : 1,
         transformOrigin: "left center",
-    },
+    }),
     show: {
         scaleX: 0,
         transition: {

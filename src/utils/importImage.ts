@@ -1,6 +1,4 @@
-let RELATIVEPATH = /.\/assets\/(.*)/;
-
-export default function importImage(str: string) {
-    let name = str.match(RELATIVEPATH)?.[1];
+export function importImage(str: string): string {
+    let name = str.replace("./assets/", "");
     return name;
 }

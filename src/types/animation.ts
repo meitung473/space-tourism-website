@@ -1,6 +1,6 @@
 import { CSSProperties } from "react";
 import { Variants } from "framer-motion";
-import { IRouteInfo } from "./global";
+import { IRouteInfo } from "../routes/type";
 
 /**
  * define label name

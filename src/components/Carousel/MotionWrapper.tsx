@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
-
 import { withOutletContainer } from "../../HOC";
+import { TStyleVariants } from "../../types/global";
 import { br } from "../../utils/Device";
 import { routeStyleVariants } from "../../utils/routeStyleVariants";
 
-const styleVariant = {
+const styleVariant: TStyleVariants = {
     destinations: css`
         grid-template-columns: repeat(2, 1fr);
         column-gap: 5rem;

@@ -4,12 +4,12 @@ import { theme } from "./style/theme";
 import { IWithPathStyled } from "./types/global";
 import { br } from "./utils/Device";
 
-const path2backgroundImage = (path: string) => {
-    let sm = "mobile";
-    let md = "tablet";
-    let xl = "desktop";
+let sm = "mobile";
+let md = "tablet";
+let xl = "desktop";
 
-    const requireFileWithSize = (size: string) =>
+const path2backgroundImage = (path: string) => {
+    const requireImageWithSize = (size: string) =>
         new URL(
             `./assets/${path}/background-${path}-${size}.jpg`,
             import.meta.url
@@ -17,12 +17,12 @@ const path2backgroundImage = (path: string) => {
 
     // require(`./assets/${path}/background-${path}-${size}.jpg`);
     return css`
-        background-image: url("${requireFileWithSize(sm)}");
+        background-image: url("${requireImageWithSize(sm)}");
         ${br.md} {
-            background-image: url("${requireFileWithSize(md)}");
+            background-image: url("${requireImageWithSize(md)}");
         }
         ${br.xl} {
-            background-image: url("${requireFileWithSize(xl)}");
+            background-image: url("${requireImageWithSize(xl)}");
         }
     `;
 };
@@ -45,11 +45,11 @@ const Container = styled(motion.main)<IWithPathStyled>`
     background-color: ${theme.colors.primary.Dark};
     transition: background-image 0.5s ease-in-out 1.4s;
     ${({ $path }) => {
-        let renderPath: string;
-        if (!$path) renderPath = "home";
-        else if ($path === "destinations") {
-            renderPath = $path.slice(0, -1);
-        } else renderPath = $path;
+        /**
+         * folder name : /destination
+         * path name : destinations
+         */
+        let renderPath = $path === "destinations" ? $path.slice(0, -1) : $path;
         return path2backgroundImage(renderPath);
     }}
 `;

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
 import { theme } from "../../style/theme";
-import { IWithPathStyled } from "../../types/global";
+import { TStyleVariants } from "../../types/global";
 import { br } from "../../utils/Device";
 import { routeStyleVariants } from "../../utils/routeStyleVariants";
 import { adjustAlpha } from "../../utils/themeMethod";
@@ -10,7 +10,7 @@ export const Indicator = styled(motion.span)`
     opacity: ${({ layoutId }) => (layoutId ? 1 : 0)};
 `;
 
-const styleVariants = {
+const styleVariants: TStyleVariants = {
     destinations: css`
         justify-content: center;
 
@@ -30,13 +30,9 @@ const styleVariants = {
             letter-spacing: 2.3625px;
         }
         li {
-            ${"" /* flex: 1 1 auto; */}
             display: flex;
             justify-content: center;
             padding: 12px 8px;
-            ${br.md} {
-                ${"" /* flex: 1 1 auto; */}
-            }
             ${br.xl} {
                 flex: 0 1 auto;
                 justify-content: flex-start;
@@ -150,7 +146,7 @@ const styleVariants = {
         }
     `,
 };
-export const Container = styled.ul<IWithPathStyled>`
+export const Container = styled.ul`
     display: flex;
     gap: 1.25em;
     ${routeStyleVariants(styleVariants)};

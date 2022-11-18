@@ -4,12 +4,12 @@ import { itemVariants, indicatorVariants, LinkVarinats } from "./animate";
 import routes from "../../routes";
 import useNestedPath from "../../hooks/useNestedPath";
 import { useState, useEffect } from "react";
-import { AnimationLink } from "..";
-import { IPageLayoutProps } from "./../PageLayout/index";
+import AnimationLink from "../AnimationLink";
+import { IPageLayoutProps } from "../PageLayout/type";
 
-export default function PageNavigation({
-    index,
-}: Pick<IPageLayoutProps, "index">) {
+type Props = Pick<IPageLayoutProps, "index">;
+
+export default function PageNavigation({ index }: Props) {
     const paths = useNestedPath();
     // route with correct carousel order
     const [order, setOrder] = useState(() => {

@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
+import { TStyleVariants } from "../../types/global";
 import { br } from "../../utils/Device";
 import { routeStyleVariants } from "../../utils/routeStyleVariants";
 
-const styleVariants = {
+const styleVariants: Partial<TStyleVariants> = {
     technology: css`
         ${br.xl} {
             grid-template-rows: repeat(2, min-content);

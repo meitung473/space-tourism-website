@@ -1,11 +1,11 @@
 import React, { useMemo, createContext, useContext } from "react";
 import { useOutletContext } from "react-router-dom";
+import { TData } from "../../routes/type";
 import { TPath2Content } from "../../types/model";
-import { TData } from "../../types/global";
 
 export interface ICarouselContext {
     type: string;
-    content: TPath2Content[keyof TData];
+    content: TPath2Content[`${keyof TData}`];
 }
 
 const CarouselContext = createContext<ICarouselContext | undefined>(undefined);

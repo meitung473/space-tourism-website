@@ -1,22 +1,18 @@
 import { LayoutGroup } from "framer-motion";
-import React, { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Nav, List, Item, Indicator } from "./style";
 import { navVariants, itemsVariants, indicatorVariants } from "./animate";
 import useNestedPath from "../../../hooks/useNestedPath";
 import routes from "../../../routes";
-
-import { EMPTYVARIANTS } from "../../../utils/sharedAnimate";
 import MotionLink from "../../AnimationLink";
-import { THandleToggle } from "../../../hooks/useToggle";
+import { emptyVariants } from "../../../animation";
+import { TUseToggle } from "../../../types/global";
 
 const links = ["home", ...routes.map((route) => route.path)];
+type Props = Pick<TUseToggle, "handleToggle">;
 
-interface NavigationProps {
-    handleToggle: THandleToggle;
-}
-
-export default function Navigation({ handleToggle }: NavigationProps) {
+export default function Navigation({ handleToggle }: Props) {
     const paths = useNestedPath();
     const navigate = useNavigate();
     useEffect(() => {
@@ -29,10 +25,8 @@ export default function Navigation({ handleToggle }: NavigationProps) {
                     let activePath: string;
                     if (typeof paths === "undefined") {
                         activePath = "home";
-                    } else if (paths[1] === "") {
-                        activePath = "home";
                     } else {
-                        activePath = paths[1];
+                        activePath = paths[1] === "" ? "home" : paths[1];
                     }
                     return (
                         <Item
@@ -50,7 +44,7 @@ export default function Navigation({ handleToggle }: NavigationProps) {
                                     onClick={(e) => {
                                         e.preventDefault();
                                     }}
-                                    variants={EMPTYVARIANTS}
+                                    variants={emptyVariants}
                                     animate="show"
                                     initial="hidden"
                                     exit="exit"

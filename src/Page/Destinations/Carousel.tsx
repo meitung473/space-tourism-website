@@ -1,7 +1,7 @@
 import { SubContent as SubContentStyle } from "./style";
 import { articleAnim } from "./animate";
 import { motion } from "framer-motion";
-import importImage from "../../utils/importImage";
+import { importImage } from "../../utils/importImage";
 import MotionText from "../../components/AnimationText/index";
 import {
     CarouselLayout,
@@ -9,7 +9,7 @@ import {
     Image as ImageStyle,
     useCarouselContext,
 } from "../../components/Carousel";
-import { useMemo } from "react";
+
 import { TPath2Content } from "../../types/model";
 import { CarouselLayoutProps } from "../../components/Carousel/CarouselContextPage";
 
@@ -48,20 +48,22 @@ function Image() {
     const { type, content } = useCarouselContext();
     const { images, name } = content as TContentType;
 
-    const defaultSrc = useMemo(
-        () =>
-            new URL("../../assets/" + importImage(images.png), import.meta.url)
-                .href,
-        [images.png]
-    );
     if (type !== "image") return null;
 
     return (
-        <ImageStyle name={name} defaultSrc={defaultSrc}>
+        <ImageStyle
+            name={name}
+            defaultSrc={
+                new URL(
+                    `../../assets/${importImage(images.png)}`,
+                    import.meta.url
+                ).href
+            }
+        >
             <source
                 srcSet={
                     new URL(
-                        "../../assets/" + importImage(images.webp),
+                        `../../assets/${importImage(images.webp)}`,
                         import.meta.url
                     ).href
                 }
